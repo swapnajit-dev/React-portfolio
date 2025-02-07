@@ -15,7 +15,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/c.png"
+                src="images/c.png"
                 alt="C"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -23,7 +23,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/c++.png"
+                src="images/c++.png"
                 alt="C++"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -31,7 +31,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/python.jpg"
+                src="images/python.jpg"
                 alt="Python"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -39,7 +39,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/java.png"
+                src="images/java.png"
                 alt="Java"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -47,7 +47,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/js.png"
+                src="images/js.png"
                 alt="JavaScript"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -55,7 +55,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/php.png"
+                src="images/php.png"
                 alt="PHP"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -70,7 +70,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/html.png"
+                src="images/html.png"
                 alt="HTML"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -78,7 +78,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/css.jpg"
+                src="images/css.jpg"
                 alt="CSS"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -86,7 +86,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/gsap.png"
+                src="images/gsap.png"
                 alt="GSAP"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -94,7 +94,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/react.png"
+                src="images/react.png"
                 alt="React"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -102,7 +102,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/angular.jpg"
+                src="images/angular.jpg"
                 alt="Angular"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -110,7 +110,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/loco.jpg"
+                src="images/loco.jpg"
                 alt="Locomotive"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -118,7 +118,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/three.png"
+                src="images/three.png"
                 alt="Three.js"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -126,7 +126,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/tailwind.png"
+                src="images/tailwind.png"
                 alt="Tailwind CSS"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -134,7 +134,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/boot.jpg"
+                src="images/boot.jpg"
                 alt="Bootstrap"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -149,7 +149,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/node logo.png"
+                src="images/node logo.png"
                 alt="Node.js"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -157,7 +157,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/express.png"
+                src="images/express.png"
                 alt="Express.js"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -165,7 +165,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/django.png"
+                src="images/django.png"
                 alt="Django"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -180,7 +180,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/sql.png"
+                src="images/sql.png"
                 alt="MySQL"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
@@ -188,7 +188,7 @@ const Skills = () => {
             <div className="flex items-center justify-between w-full mb-4">
               <hr className="border-t-2 border-white w-24" />
               <img
-                src="./public/images/download.jpg"
+                src="images/download.jpg"
                 alt="MongoDB"
                 className="w-24 h-24 rounded-full border-4 border-[#FFD700] shadow-md hover:shadow-[0_0_15px_5px_#FFD700] md:hover:shadow-[0_0_25px_10px_#FFD700] transition-all duration-300"
               />
