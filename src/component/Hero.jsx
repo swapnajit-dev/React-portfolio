@@ -69,7 +69,7 @@ const Hero = () => {
           My CV
         </h2>
         <a
-          href="./public/Swapnajit_resume_4.pdf"
+          href="Swapnajit_resume_4.pdf"
           download = "Swapnajit_resume_4.pdf"
           className="px-6 py-3 bg-[#FFD700] text-black font-semibold rounded-lg shadow-md hover:bg-[#e6c200] transition-all"
         >
