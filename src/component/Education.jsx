@@ -28,7 +28,7 @@ const Education = () => {
             <h4 className="text-sm mb-2 text-gray-400">2023 - 2025</h4>
             <img
             
-              src="/public/images/photo.jpg"
+              src="images/photo.jpg"
               className="w-12 h-12 md:w-16 md:h-16 object-contain mx-auto md:mx-0 rounded-full border-2 border-yellow-400 shadow-md"
               alt="Nalanda Institute of Technology Logo"
             />
