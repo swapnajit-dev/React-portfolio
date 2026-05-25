@@ -1,130 +1,151 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 30);
+    window.addEventListener('scroll', onScroll);
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
+
+  useEffect(() => { setIsMenuOpen(false); }, [location.pathname]);
+
+  const links = [
+    { to: '/', label: 'Home' },
+    { to: '/projects', label: 'Projects' },
+    { to: '/skills', label: 'Skills' },
+    { to: '/education', label: 'Education' },
+    { to: '/contact', label: 'Contact' },
+  ];
+
+  const isActive = (to) => location.pathname === to;
 
   return (
-    <div className="bg-black w-full backdrop-blur-md bg-black/30 border-b border-black/20">
-      <div className="h-[10vh] w-full flex items-center justify-between px-5 md:px-10">
-        {/* Logo or Brand */}
-        <div className="flex items-center">
-          {/* SVG Logo with "DEV" */}
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 200 100"
-            width="100"
-            height="50"
-          >
-            <defs>
-              <linearGradient
-                id="gold-gradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
+    <>
+      <nav
+        style={{
+          position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000,
+          transition: 'all 0.4s ease',
+          background: scrolled ? 'rgba(6,6,8,0.92)' : 'transparent',
+          backdropFilter: scrolled ? 'blur(24px)' : 'none',
+          WebkitBackdropFilter: scrolled ? 'blur(24px)' : 'none',
+          borderBottom: scrolled ? '1px solid rgba(212,175,55,0.1)' : '1px solid transparent',
+        }}
+      >
+        <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem', height: '72px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          {/* Logo */}
+          <Link to="/" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <div style={{
+              width: '38px', height: '38px', borderRadius: '10px',
+              background: 'linear-gradient(135deg, #D4AF37, #8B6914)',
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              fontFamily: 'Syne, sans-serif', fontWeight: 800, fontSize: '16px', color: '#060608',
+              boxShadow: '0 0 20px rgba(212,175,55,0.3)',
+            }}>S</div>
+            <span style={{ fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '18px', color: '#fff', letterSpacing: '0.02em' }}>
+              Swapnajit
+            </span>
+          </Link>
+
+          {/* Desktop nav */}
+          <div className="hidden md:flex" style={{ gap: '2.5rem', alignItems: 'center' }}>
+            {links.map(({ to, label }) => (
+              <Link
+                key={to} to={to}
+                style={{
+                  textDecoration: 'none',
+                  fontFamily: 'DM Sans, sans-serif', fontSize: '13px', fontWeight: 500,
+                  letterSpacing: '0.08em', textTransform: 'uppercase',
+                  color: isActive(to) ? '#D4AF37' : 'rgba(255,255,255,0.7)',
+                  transition: 'color 0.3s',
+                  position: 'relative',
+                  paddingBottom: '2px',
+                }}
+                onMouseEnter={e => { if (!isActive(to)) e.target.style.color = '#fff'; }}
+                onMouseLeave={e => { if (!isActive(to)) e.target.style.color = 'rgba(255,255,255,0.7)'; }}
               >
-                <stop
-                  offset="0%"
-                  style={{ stopColor: "gold", stopOpacity: 1 }}
-                />
-                <stop
-                  offset="100%"
-                  style={{ stopColor: "darkgoldenrod", stopOpacity: 1 }}
-                />
-              </linearGradient>
-            </defs>
-            <rect width="100%" height="100%" fill="black" />
-            <text
-              x="50%"
-              y="50%"
-              fontFamily="Arial"
-              fontSize="50"
-              fill="url(#gold-gradient)"
-              textAnchor="middle"
-              alignmentBaseline="middle"
-            >
-              DEV
-            </text>
-          </svg>
-        </div>
+                {label}
+                {isActive(to) && (
+                  <span style={{
+                    position: 'absolute', bottom: '-4px', left: 0, right: 0,
+                    height: '1px', background: '#D4AF37',
+                    boxShadow: '0 0 8px rgba(212,175,55,0.8)',
+                  }} />
+                )}
+              </Link>
+            ))}
+          </div>
 
-        {/* Hamburger Menu for Mobile */}
-        <div
-          className="md:hidden text-white cursor-pointer"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? "✖" : "☰"}
-        </div>
-
-        {/* Desktop Navigation */}
-        <div className="hidden md:flex space-x-6">
-          <Link
-            to="/"
-            className="relative text-white text-md font-medium cursor-pointer group uppercase hover-glow group-hover:opacity-50"
+          {/* CTA */}
+          <a
+            href="Swapnajit_resume_4.pdf" download
+            className="hidden md:flex"
+            style={{
+              padding: '8px 20px', borderRadius: '8px',
+              background: 'linear-gradient(135deg, #D4AF37, #8B6914)',
+              color: '#060608', fontFamily: 'Syne, sans-serif', fontWeight: 700,
+              fontSize: '12px', letterSpacing: '0.1em', textTransform: 'uppercase',
+              textDecoration: 'none', transition: 'transform 0.2s, box-shadow 0.2s',
+              boxShadow: '0 0 20px rgba(212,175,55,0.2)',
+            }}
+            onMouseEnter={e => { e.target.style.transform = 'scale(1.05)'; e.target.style.boxShadow = '0 0 30px rgba(212,175,55,0.4)'; }}
+            onMouseLeave={e => { e.target.style.transform = 'scale(1)'; e.target.style.boxShadow = '0 0 20px rgba(212,175,55,0.2)'; }}
           >
-            Home
-            <span className="absolute left-0 bottom-[-3px] w-0 h-[2px] bg-[#FFD700] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link
-          to="/projects" className="relative text-white text-md font-medium cursor-pointer group uppercase hover-glow group-hover:opacity-50">
-            Projects
-            <span className="absolute left-0 bottom-[-3px] w-0 h-[2px] bg-[#FFD700] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link
-          to="/skills" className="relative text-white text-md font-medium cursor-pointer group uppercase hover-glow group-hover:opacity-50">
-            Skills
-            <span className="absolute left-0 bottom-[-3px] w-0 h-[2px] bg-[#FFD700] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link
-          to="/education" className="relative text-white text-md font-medium cursor-pointer group uppercase hover-glow group-hover:opacity-50">
-            Education
-            <span className="absolute left-0 bottom-[-3px] w-0 h-[2px] bg-[#FFD700] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
-          <Link
-            to="/contact"
-            className="relative text-white text-md font-medium cursor-pointer group uppercase hover-glow group-hover:opacity-50"
+            Resume
+          </a>
+
+          {/* Hamburger */}
+          <button
+            className="md:hidden"
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            style={{ background: 'none', border: 'none', cursor: 'none', padding: '8px', color: '#fff' }}
           >
-            Contact
-            <span className="absolute left-0 bottom-[-3px] w-0 h-[2px] bg-[#FFD700] transition-all duration-300 group-hover:w-full"></span>
-          </Link>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '5px', width: '22px' }}>
+              <span style={{ height: '1.5px', background: isMenuOpen ? '#D4AF37' : '#fff', transition: 'all 0.3s', transform: isMenuOpen ? 'rotate(45deg) translate(5px, 5px)' : 'none', display: 'block', borderRadius: '2px' }} />
+              <span style={{ height: '1.5px', background: '#D4AF37', transition: 'all 0.3s', opacity: isMenuOpen ? 0 : 1, display: 'block', borderRadius: '2px' }} />
+              <span style={{ height: '1.5px', background: isMenuOpen ? '#D4AF37' : '#fff', transition: 'all 0.3s', transform: isMenuOpen ? 'rotate(-45deg) translate(5px, -5px)' : 'none', display: 'block', borderRadius: '2px' }} />
+            </div>
+          </button>
         </div>
 
-        <style jsx>
-          {`
-            .hover-glow:hover {
-              text-shadow: 0 0 8px rgba(255, 255, 255, 0.8),
-                0 0 16px rgba(255, 255, 255, 0.6),
-                0 0 24px rgba(255, 255, 255, 0.4);
-            }
-            .group:hover .group-hover:opacity-50 {
-              opacity: 0.5;
-            }
-          `}
-        </style>
-
-        <style jsx>
-          {`
-            .hover-glow:hover {
-              text-shadow: 0 0 8px rgba(255, 255, 255, 0.8),
-                0 0 16px rgba(255, 255, 255, 0.6),
-                0 0 24px rgba(255, 255, 255, 0.4);
-            }
-          `}
-        </style>
-      </div>
-      {/* Mobile Navigation */}
-      {/* Mobile Navigation */}  
-{isMenuOpen && (  
-  <div className="flex flex-col items-center space-y-4 py-5 bg-black text-white md:hidden">  
-    <Link to="/" className="text-lg font-medium cursor-pointer uppercase">Home</Link> {/* Corrected Link */}
-    <Link to="/projects" className="text-lg font-medium cursor-pointer uppercase">Projects</Link> {/* Corrected Link */}  
-    <Link to="/skills" className="text-lg font-medium cursor-pointer uppercase">Skills</Link>  
-    <Link to="/education" className="text-lg font-medium cursor-pointer uppercase">Education</Link>  
-    <Link to="/contact" className="text-lg font-medium cursor-pointer uppercase">Contact</Link>  
-  </div>  
-)}
-    </div>
+        {/* Mobile menu */}
+        {isMenuOpen && (
+          <div style={{
+            background: 'rgba(6,6,8,0.98)', backdropFilter: 'blur(24px)',
+            borderTop: '1px solid rgba(212,175,55,0.1)',
+            padding: '1.5rem 2rem 2rem',
+            animation: 'slideUp 0.3s ease',
+          }}>
+            {links.map(({ to, label }) => (
+              <Link
+                key={to} to={to}
+                style={{
+                  display: 'block', padding: '14px 0',
+                  borderBottom: '1px solid rgba(255,255,255,0.05)',
+                  textDecoration: 'none',
+                  fontFamily: 'Syne, sans-serif', fontWeight: 600, fontSize: '20px',
+                  color: isActive(to) ? '#D4AF37' : 'rgba(255,255,255,0.8)',
+                }}
+              >
+                {label}
+              </Link>
+            ))}
+            <a href="Swapnajit_resume_4.pdf" download style={{
+              display: 'block', marginTop: '1.5rem', padding: '14px',
+              background: 'linear-gradient(135deg, #D4AF37, #8B6914)',
+              color: '#060608', textAlign: 'center', borderRadius: '10px',
+              fontFamily: 'Syne, sans-serif', fontWeight: 700, fontSize: '14px',
+              letterSpacing: '0.1em', textDecoration: 'none',
+            }}>Download Resume</a>
+          </div>
+        )}
+      </nav>
+    </>
   );
 };
 

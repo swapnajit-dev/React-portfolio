@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 import Blackout from './component/Blackout';
@@ -11,6 +11,7 @@ import Skill_node from './component/Skill_node';
 import Skills from './component/Skills';
 import Contact from './component/Contact';
 import Education from './component/Education';
+import Cursor from './component/Cursor';
 
 const App = () => {
   const [showBlackout, setShowBlackout] = useState(true);
@@ -54,10 +55,10 @@ const App = () => {
       element: (
         <>
         <Navbar />
-          <Skill />
+        <Skill/>
           <Skill_js />
-          <Skill_react />
-          <Skill_node />
+          <Skill_react/>
+          <Skill_node/>
         </>
       ),
     },
@@ -73,7 +74,8 @@ const App = () => {
   ]);
 
   return (
-    <div className="bg-[#070707] text-white">
+    <div style={{ paddingTop: "72px" }} className="bg-[#070707] text-white">
+      <Cursor/>
       
       {showBlackout && <Blackout onClick={handleButtonClick} />}
       {showComponents && (
@@ -83,8 +85,6 @@ const App = () => {
           {/* <Education/> 
           <Skill />
           <Skill_js />
-          <Skill_react />
-          <Skill_node />
           <Skills/>
           <Contact/> */}
         </>

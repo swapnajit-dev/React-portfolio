@@ -1,66 +1,94 @@
-import { div } from "framer-motion/client";
 import React from "react";
 
 const Education = () => {
   return (
-    <div className="h-screen w-full px-5 md:px-10 py-7 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 text-white">
-      <h1 className="text-3xl md:text-4xl font-bold mb-4 text-yellow-400 border-b-4 border-yellow-400 pb-2">
-        EDUCATION
-      </h1>
+    <section className="min-h-screen bg-[#060608] text-white px-5 md:px-14 py-16 relative overflow-hidden">
 
-      <div className="shadow-xl rounded-lg p-4 md:p-6 bg-gray-800 hover:shadow-2xl hover:scale-105 transition-all duration-300">
-        <div className="flex flex-col md:flex-row items-start md:items-center justify-between mb-6 space-y-4 md:space-y-0">
-          <div>
-            <h1
-              className="inline-block mb-4 md:mb-6 text-transparent text-3xl md:text-4xl font-extrabold font-sans transition-all duration-500 hover:text-yellow-400 hover:shadow-lg hover:shadow-yellow-400"
-              style={{ WebkitTextStroke: "0.3px #FFD700" }}
-            >
-              MCA
-            </h1>
-            <h3 className="text-lg md:text-xl font-semibold text-yellow-200">
-              Nalanda Institute of Technology
-            </h3>
-            <h4 className="text-sm md:text-lg text-gray-300">
-              Master of Computer Application (Computer Science & Engineering)
-            </h4>
-          </div>
-          <div className="text-center md:text-right">
-            <h4 className="text-sm mb-2 text-gray-400">2023 - 2025</h4>
-            <img
-            
-              src="images/photo.jpg"
-              className="w-12 h-12 md:w-16 md:h-16 object-contain mx-auto md:mx-0 rounded-full border-2 border-yellow-400 shadow-md"
-              alt="Nalanda Institute of Technology Logo"
-            />
-          </div>
-        </div>
+      {/* Glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-yellow-500/10 blur-[120px] md:blur-[180px] rounded-full" />
 
-        <div>
-          <p className="mb-4 text-gray-300 text-sm md:text-base leading-6 md:leading-7">
-            I am currently pursuing a Master of Computer Applications (MCA) at
-            the Nalanda Institute of Technology. This program has provided me
-            with a comprehensive understanding of computer science and software
-            development principles, while also encouraging analytical thinking
-            and problem-solving skills. Through academic projects and
-            coursework, I have developed a strong foundation in computer
-            applications and their real-world implementation.
-          </p>
-          <div className="mt-4">
-            <h4 className="text-sm font-semibold text-yellow-400">
-              College Website:
-            </h4>
-            <a
-              href="https://www.thenalanda.com/"
-              className="text-[#FFD700] hover:underline hover:text-yellow-300 break-all"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              https://www.thenalanda.com/
-            </a>
-          </div>
-        </div>
+      {/* Title */}
+      <div className="relative z-10 mb-10 md:mb-20">
+        <h1 className="text-3xl sm:text-4xl md:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-yellow-500 to-yellow-200">
+          EDUCATION
+        </h1>
+        <div className="w-20 md:w-28 h-[3px] md:h-[4px] bg-yellow-500 rounded-full mt-2" />
       </div>
-    </div>
+
+      {/* Card */}
+      <div className="relative z-10 max-w-4xl mx-auto backdrop-blur-xl bg-white/[0.04] border border-yellow-500/20 rounded-2xl md:rounded-[32px] p-5 md:p-10">
+
+        {/* Header */}
+        <div className="flex flex-col md:flex-row justify-between gap-6">
+
+          <div>
+            <span className="inline-block px-3 py-1 text-xs md:text-sm rounded-full bg-yellow-500/10 border border-yellow-500/30 text-yellow-300">
+              MASTER'S DEGREE
+            </span>
+
+            <h2 className="mt-4 text-2xl md:text-5xl font-black">
+              MCA
+            </h2>
+
+            <p className="text-yellow-300 text-lg mt-2">
+              Nalanda Institute of Technology
+            </p>
+
+            <p className="text-white/60 text-sm md:text-base mt-1">
+              Master of Computer Application
+            </p>
+          </div>
+
+          <div className="flex md:flex-col items-center md:items-end gap-4 md:gap-3">
+            <img
+              src="/images/photo.jpg"
+              className="w-14 h-14 md:w-24 md:h-24 rounded-xl object-cover border border-yellow-500/30"
+              alt="college"
+            />
+
+            <span className="text-xs md:text-sm px-3 py-1 rounded-full bg-yellow-500/10 border border-yellow-500/20 text-yellow-300">
+              2023 — 2025
+            </span>
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="mt-6 md:mt-10 text-white/70 text-sm md:text-lg leading-6 md:leading-8">
+          Completed Master of Computer Application focusing on full-stack
+          development, system design, database management, and scalable web
+          applications. Built strong problem-solving and real-world software
+          development experience through academic and personal projects.
+        </p>
+
+        {/* Stats */}
+        <div className="mt-6 md:mt-10 flex flex-wrap gap-3">
+
+          <div className="px-4 py-2 text-sm rounded-lg bg-white/5 border border-white/10">
+            CGPA: <span className="text-yellow-400">9.25</span>
+          </div>
+
+          <div className="px-4 py-2 text-sm rounded-lg bg-white/5 border border-white/10">
+            Full Stack Development
+          </div>
+
+          <div className="px-4 py-2 text-sm rounded-lg bg-white/5 border border-white/10">
+            Software Engineering
+          </div>
+
+        </div>
+
+        {/* Link */}
+        <a
+          href="https://www.thenalanda.com/"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-block mt-6 md:mt-10 text-yellow-400 text-sm md:text-base hover:text-yellow-300"
+        >
+          Visit Institute →
+        </a>
+
+      </div>
+    </section>
   );
 };
 
