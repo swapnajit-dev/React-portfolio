@@ -10,11 +10,13 @@ const ROLES = [
   "Creative Frontend Engineer",
 ];
 
+
 const useTypewriter = (words, speed = 80, pause = 1800) => {
   const [display, setDisplay] = useState('');
   const [wordIdx, setWordIdx] = useState(0);
   const [typing, setTyping] = useState(true);
   const [charIdx, setCharIdx] = useState(0);
+
 
   useEffect(() => {
     let timer;
@@ -84,25 +86,38 @@ const Hero = () => {
   const role = useTypewriter(ROLES);
   const heroRef = useRef(null);
   const [mousePos, setMousePos] = useState({ x: 0.5, y: 0.5 });
+  const [orbit,setOrbit]=useState({
+  x:0,
+  y:0
+})
 
- useEffect(() => {
-  const el = heroRef.current;
-  if (!el) return;
+  useEffect(() => {
+    const el = heroRef.current;
+    if (!el) return;
 
-  const handleMouse = (e) => {
-    const rect = el.getBoundingClientRect();
-    setMousePos({
-      x: (e.clientX - rect.left) / rect.width,
-      y: (e.clientY - rect.top) / rect.height,
-    });
-  };
+    const handleMouse = (e) => {
+  const rect = el.getBoundingClientRect();
 
-  el.addEventListener('mousemove', handleMouse);
+  setMousePos({
+    x: (e.clientX - rect.left) / rect.width,
+    y: (e.clientY - rect.top) / rect.height,
+  });
 
-  return () => {
-    el.removeEventListener('mousemove', handleMouse);
-  };
-}, []);
+  const cx = rect.width * 0.75;
+  const cy = rect.height * 0.5;
+
+  setOrbit({
+    x: (e.clientX - rect.left - cx) * 0.08,
+    y: (e.clientY - rect.top - cy) * 0.08,
+  });
+};;
+
+    el.addEventListener('mousemove', handleMouse);
+
+    return () => {
+      el.removeEventListener('mousemove', handleMouse);
+    };
+  }, []);
 
   const container = {
     hidden: {},
@@ -163,27 +178,70 @@ const Hero = () => {
       </motion.div>
 
       {/* Floating badge */}
-      <motion.div
-        animate={{ y: [0, 12, 0] }}
-        transition={{ duration: 6, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-        style={{
-          position: 'absolute', bottom: '22%', left: '5%',
-          background: 'rgba(13,13,18,0.9)',
-          border: '1px solid rgba(212,175,55,0.15)',
-          borderRadius: '100px', padding: '10px 18px',
-          backdropFilter: 'blur(20px)',
-          display: 'flex', alignItems: 'center', gap: '8px',
-        }}
-        className="hidden lg:flex"
-      >
-        <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#4ade80', boxShadow: '0 0 8px #4ade80' }} />
-        <span style={{ fontSize: '12px', fontWeight: 500, color: 'rgba(255,255,255,0.7)' }}>Available for work</span>
-      </motion.div>
+   <motion.div
+  animate={{ y: [0, 10, 0] }}
+  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+  style={{
+    position: "absolute",
+    top: "18%",
+    right: "12%",
+    zIndex: 20,
+
+    display: "flex",
+    alignItems: "center",
+    gap: "8px",
+
+    padding: "10px 16px",
+    borderRadius: "999px",
+
+    background: "rgba(13,13,18,0.75)",
+    border: "1px solid rgba(212,175,55,0.25)",
+    backdropFilter: "blur(18px)",
+    boxShadow: "0 0 30px rgba(212,175,55,0.08)",
+  }}
+  className="hidden lg:flex"
+>
+  <div
+    style={{
+      width: "8px",
+      height: "8px",
+      borderRadius: "50%",
+      background: "#4ade80",
+      boxShadow: "0 0 10px #4ade80",
+    }}
+  />
+
+  <span
+    style={{
+      fontSize: "12px",
+      fontWeight: 600,
+      color: "rgba(255,255,255,0.75)",
+      letterSpacing: "0.5px",
+    }}
+  >
+    Available for work
+  </span>
+</motion.div>
 
       {/* Main content */}
-      <div style={{ maxWidth: '1400px', margin: '0 auto', padding: '0 2rem', width: '100%' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr', gap: '4rem', alignItems: 'center' }}
-          className="lg:grid-cols-[1fr,420px]"
+      <div
+        style={{
+          maxWidth: "1400px",
+          margin: "0 auto",
+          padding: "0 2rem",
+          width: "100%",
+        }}
+      >
+        <div
+          className="
+    grid
+    grid-cols-1
+    lg:grid-cols-[1fr_460px]
+    gap-12
+    lg:gap-20
+    items-center
+    min-h-[85vh]
+    "
         >
           {/* Left */}
           <motion.div
@@ -250,7 +308,7 @@ const Hero = () => {
                 marginBottom: '2.5rem',
               }}
             >
-              I craft exceptional digital experiences using the MERN stack, Django, and modern animation libraries. 
+              I craft exceptional digital experiences using the MERN stack, Django, and modern animation libraries.
               Currently pursuing MCA at Nalanda Institute of Technology, turning complex ideas into elegant, performant web applications.
             </motion.p>
 
@@ -270,7 +328,7 @@ const Hero = () => {
               >
                 View Projects
               </Link>
-              <a href="Swapnajit_resume_4.pdf" download style={{
+              <a href="jeet_resume.pdf" download style={{
                 padding: '14px 28px', borderRadius: '10px',
                 background: 'rgba(255,255,255,0.04)',
                 border: '1px solid rgba(212,175,55,0.25)',
@@ -297,88 +355,87 @@ const Hero = () => {
 
           {/* Right: Profile */}
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ delay: 0.4, duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
-            style={{ display: 'flex', justifyContent: 'center', position: 'relative' }}
-            className="hidden lg:flex"
-          >
-            {/* Rotating ring */}
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-              style={{
-                position: 'absolute',
-                width: '360px', height: '360px',
-                borderRadius: '50%',
-                border: '1px dashed rgba(212,175,55,0.25)',
-              }}
-            />
-            <motion.div
-              animate={{ rotate: -360 }}
-              transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
-              style={{
-                position: 'absolute',
-                width: '420px', height: '420px',
-                borderRadius: '50%',
-                border: '1px solid rgba(212,175,55,0.08)',
-              }}
-            />
+  initial={{ opacity: 0, scale: 0.9, x: 80 }}
+  animate={{ opacity: 1, scale: 1, x: 0 }}
+  transition={{ delay: 0.4, duration: 0.8 }}
+  className="relative flex justify-center lg:justify-end items-center order-1 lg:order-2 mb-10 lg:mb-0 min-h-[420px]"
+>
 
-            {/* Profile image container */}
-            <div style={{
-              width: '300px', height: '300px',
-              borderRadius: '50%',
-              padding: '3px',
-              background: 'linear-gradient(135deg, #D4AF37, #8B6914, #D4AF37)',
-              boxShadow: '0 0 60px rgba(212,175,55,0.2), 0 0 120px rgba(212,175,55,0.08)',
-              position: 'relative', zIndex: 1,
-            }}>
-              <div style={{
-                width: '100%', height: '100%',
-                borderRadius: '50%',
-                background: '#0d0d12',
-                overflow: 'hidden',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-              }}>
-                <img
-                  src="/images/DEV2.png"
-                  alt="Swapnajit - Developer"
-                  style={{ width: '100%', height: '100%', objectFit: 'cover' }}
-                  onError={e => {
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = `<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#1a1a2e,#0d0d18);font-family:Syne,sans-serif;font-size:72px;font-weight:800;background:linear-gradient(135deg,#D4AF37,#F5D76E);-webkit-background-clip:text;-webkit-text-fill-color:transparent">S</div>`;
-                  }}
-                />
-              </div>
-            </div>
+  {/* glow */}
+  <motion.div
+    animate={{
+      x: orbit.x * 0.5,
+      y: orbit.y * 0.5,
+      scale: [1, 1.05, 1],
+    }}
+    transition={{ duration: 4, repeat: Infinity }}
+    className="absolute w-[320px] h-[320px] rounded-full bg-yellow-400/20 blur-[70px]"
+  />
 
-            {/* Floating tech badges */}
-            {[
-              { label: 'React', top: '10%', right: '-10%', delay: 1.0 },
-              { label: 'Node.js', bottom: '20%', right: '-15%', delay: 1.2 },
-              { label: 'MongoDB', bottom: '5%', left: '5%', delay: 1.4 },
-            ].map(({ label, delay, ...pos }) => (
-              <motion.div
-                key={label}
-                initial={{ opacity: 0, scale: 0 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ delay, duration: 0.5, ease: [0.23, 1, 0.32, 1] }}
-                style={{
-                  position: 'absolute', ...pos,
-                  background: 'rgba(13,13,18,0.95)',
-                  border: '1px solid rgba(212,175,55,0.2)',
-                  borderRadius: '100px', padding: '8px 16px',
-                  fontFamily: 'Syne, sans-serif', fontWeight: 700,
-                  fontSize: '12px', color: '#D4AF37',
-                  backdropFilter: 'blur(20px)',
-                  whiteSpace: 'nowrap',
-                }}
-              >
-                {label}
-              </motion.div>
-            ))}
-          </motion.div>
+  {/* inner ring */}
+  <motion.div
+    animate={{
+      rotate: 360,
+      x: orbit.x,
+      y: orbit.y,
+      scale: [1, 1.03, 1],
+    }}
+    transition={{
+      rotate: { duration: 14, repeat: Infinity, ease: "linear" },
+      x: { type: "spring", stiffness: 80 },
+      y: { type: "spring", stiffness: 80 },
+      scale: { duration: 3, repeat: Infinity },
+    }}
+    className="absolute w-[clamp(280px,30vw,420px)] h-[clamp(280px,30vw,420px)] rounded-full p-[5px]"
+    style={{
+      background:
+        "conic-gradient(from 0deg, transparent, #D4AF37, #ffe6a6, transparent)",
+      filter: "drop-shadow(0 0 20px rgba(212,175,55,0.5))",
+    }}
+  >
+    <div className="w-full h-full rounded-full bg-[#060608]" />
+  </motion.div>
+
+  {/* outer ring */}
+  <motion.div
+    animate={{
+      rotate: -360,
+      x: -orbit.x * 0.6,
+      y: -orbit.y * 0.6,
+    }}
+    transition={{
+      rotate: { duration: 26, repeat: Infinity, ease: "linear" },
+      x: { type: "spring", stiffness: 60 },
+      y: { type: "spring", stiffness: 60 },
+    }}
+    className="absolute w-[clamp(340px,36vw,500px)] h-[clamp(340px,36vw,500px)] rounded-full border border-yellow-500/20 shadow-[0_0_40px_rgba(212,175,55,0.15)]"
+  />
+
+  {/* image */}
+  <motion.div
+    animate={{
+      x: orbit.x * 0.3,
+      y: orbit.y * 0.3,
+      rotateY: orbit.x * 0.15,
+      rotateX: -orbit.y * 0.15,
+    }}
+    transition={{ type: "spring", stiffness: 80, damping: 14 }}
+    className="relative z-10 w-[240px] h-[240px] sm:w-[280px] sm:h-[280px] md:w-[320px] md:h-[320px] lg:w-[340px] lg:h-[340px] xl:w-[370px] xl:h-[370px] rounded-full p-[4px]"
+    style={{
+      background: "linear-gradient(135deg,#D4AF37,#8B6914,#D4AF37)",
+      boxShadow:
+        "0 0 60px rgba(212,175,55,0.25), 0 0 120px rgba(212,175,55,0.1)",
+    }}
+  >
+    <div className="w-full h-full rounded-full overflow-hidden bg-[#0d0d12]">
+      <img
+        src="profile.jpeg"
+        className="w-full h-full object-cover"
+      />
+    </div>
+  </motion.div>
+
+</motion.div>
         </div>
       </div>
     </section>

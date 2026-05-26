@@ -83,7 +83,7 @@ const Navbar = () => {
 
           {/* CTA */}
           <a
-            href="Swapnajit_resume_4.pdf" download
+            href="jeet_resume.pdf" download
             className="hidden md:flex"
             style={{
               padding: '8px 20px', borderRadius: '8px',

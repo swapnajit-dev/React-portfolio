@@ -10,30 +10,101 @@ import React, {
 
 const Card = memo(function Card({
   item,
-  active,
+ active,
 }) {
-  return active ? (
-    <video
-      autoPlay
-      muted
-      loop
-      playsInline
-      preload="metadata"
-      className="w-full h-full object-cover"
-    >
-      <source
-        src={item.videoSrc}
-        type="video/mp4"
+  const [loaded, setLoaded] =
+    useState(false);
+
+  React.useEffect(() => {
+    if (!active) {
+      setLoaded(false);
+    }
+  }, [active]);
+
+  return (
+    <div className="w-full h-full relative">
+
+      {/* Thumbnail */}
+      <img
+        src={item.imgSrc}
+        alt={item.name}
+        className={`
+        absolute
+        inset-0
+        w-full
+        h-full
+        object-cover
+        transition-opacity
+        duration-500
+        ${
+          active && loaded
+            ? "opacity-0"
+            : "opacity-100"
+        }
+        `}
       />
-    </video>
-  ) : (
-    <img
-      src={item.imgSrc}
-      alt={item.name}
-      loading="lazy"
-      decoding="async"
-      className="w-full h-full object-cover"
-    />
+
+      {/* Loader */}
+      {active && !loaded && (
+        <div
+          className="
+          absolute
+          inset-0
+          flex
+          items-center
+          justify-center
+          bg-black/60
+          z-20
+          "
+        >
+          <div
+            className="
+            w-10
+            h-10
+            border-4
+            border-yellow-500/30
+            border-t-[#D4AF37]
+            rounded-full
+            animate-spin
+            "
+          />
+        </div>
+      )}
+
+      {/* Video only when active */}
+      {active && (
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          onLoadedData={() =>
+            setLoaded(true)
+          }
+          className={`
+          absolute
+          inset-0
+          w-full
+          h-full
+          object-cover
+          transition-opacity
+          duration-500
+          ${
+            loaded
+              ? "opacity-100"
+              : "opacity-0"
+          }
+          `}
+        >
+          <source
+            src={item.videoSrc}
+            type="video/mp4"
+          />
+        </video>
+      )}
+
+    </div>
   );
 });
 
