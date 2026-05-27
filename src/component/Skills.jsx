@@ -216,65 +216,83 @@ export default function Skills() {
     diff > 0 ? next() : prev();
   };
 
-  const getStyle = (i) => {
-    const diff =
-      (i - index + data.length) %
-      data.length;
+const getStyle = (i) => {
+  const diff =
+    (i - index + data.length) %
+    data.length;
 
-    let pos = "hidden";
+  let pos = "hidden";
 
-    if (i === index)
-      pos = "center";
-    else if (diff === 1)
-      pos = "right";
-    else if (
-      diff ===
-      data.length - 1
-    )
-      pos = "left";
+  if (i === index)
+    pos = "center";
+  else if (diff === 1)
+    pos = "right";
+  else if (
+    diff === data.length - 1
+  )
+    pos = "left";
 
-    const base = {
-      position: "absolute",
-      transition:
-        "all 700ms cubic-bezier(0.22,1,0.36,1)",
-    };
+  const mobile =
+    window.innerWidth < 640;
 
-    if (pos === "center")
-      return {
-        ...base,
-        transform:
-          "translateX(0) scale(1.15)",
-        opacity: 1,
-        filter: "blur(0px)",
-        zIndex: 10,
-      };
+  const offset = mobile
+    ? 120
+    : 280;
 
-    if (pos === "left")
-      return {
-        ...base,
-        transform:
-          "translateX(-280px) scale(0.92)",
-        opacity: 0.35,
-        filter: "blur(6px)",
-        zIndex: 5,
-      };
+  const centerScale =
+    mobile ? 1 : 1.15;
 
-    if (pos === "right")
-      return {
-        ...base,
-        transform:
-          "translateX(280px) scale(0.92)",
-        opacity: 0.35,
-        filter: "blur(6px)",
-        zIndex: 5,
-      };
+  const sideScale =
+    mobile ? 0.8 : 0.92;
 
+  const blur =
+    mobile ? "blur(4px)"
+    : "blur(6px)";
+
+  const base = {
+    position: "absolute",
+    transition:
+      "all 700ms cubic-bezier(0.22,1,0.36,1)",
+    willChange:
+      "transform",
+  };
+
+  if (pos === "center")
     return {
       ...base,
-      opacity: 0,
-      transform: "scale(.6)",
+      transform:
+        `translateX(0) scale(${centerScale})`,
+      opacity: 1,
+      filter: "blur(0px)",
+      zIndex: 10,
     };
+
+  if (pos === "left")
+    return {
+      ...base,
+      transform:
+        `translateX(-${offset}px) scale(${sideScale})`,
+      opacity: 0.3,
+      filter: blur,
+      zIndex: 5,
+    };
+
+  if (pos === "right")
+    return {
+      ...base,
+      transform:
+        `translateX(${offset}px) scale(${sideScale})`,
+      opacity: 0.3,
+      filter: blur,
+      zIndex: 5,
+    };
+
+  return {
+    ...base,
+    opacity: 0,
+    transform: "scale(.6)",
   };
+};
 
   return (
     <div
@@ -302,19 +320,23 @@ export default function Skills() {
         Skills
       </h1>
 
-      <div
-        onTouchStart={onStart}
-        onTouchEnd={onEnd}
-        className="
-        relative
-        w-full
-        max-w-5xl
-        h-[520px]
-        flex
-        items-center
-        justify-center
-        "
-      >
+     <div
+onTouchStart={onStart}
+onTouchEnd={onEnd}
+className="
+relative
+w-full
+max-w-5xl
+
+h-[380px]
+sm:h-[450px]
+md:h-[520px]
+
+flex
+items-center
+justify-center
+"
+>
         {data.map((item, i) => (
           <div
             key={i}
@@ -322,20 +344,28 @@ export default function Skills() {
           >
             <div
               className="
-              w-[440px]
+              
               bg-[#0d0d12]/90
               backdrop-blur-xl
               border
               border-yellow-500/20
               rounded-3xl
-              p-8
+              w-[260px]
+sm:w-[340px]
+md:w-[440px]
+
+p-4
+sm:p-6
+md:p-8
               shadow-[0_0_60px_rgba(212,175,55,0.08)]
             "
             >
               <h2
                 className="
                 text-yellow-400
-                text-3xl
+                text-xl
+sm:text-2xl
+md:text-3xl
                 font-bold
                 mb-7
               "
@@ -365,7 +395,9 @@ export default function Skills() {
       src={skill.logo}
       alt={skill.name}
       className="
-        w-14 h-14 object-contain
+        w-10 h-10
+sm:w-12 sm:h-12
+md:w-14 md:h-14 object-contain
         transition-all duration-300
         group-hover:scale-110
       "

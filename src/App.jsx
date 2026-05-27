@@ -1,93 +1,137 @@
-import { useState } from 'react';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { useState, useEffect } from "react";
+import {
+  createBrowserRouter,
+  RouterProvider,
+} from "react-router-dom";
 
-import Blackout from './component/Blackout';
-import Navbar from './component/Navbar';
-import Hero from './component/Hero';
-import Skill from './component/Skill';
-import Skill_js from './component/Skill_js';
-import Skill_react from './component/Skill_react';
-import Skill_node from './component/Skill_node';
-import Skills from './component/Skills';
-import Contact from './component/Contact';
-import Education from './component/Education';
-import Cursor from './component/Cursor';
+import Blackout from "./component/Blackout";
+import Navbar from "./component/Navbar";
+import Hero from "./component/Hero";
+import Skill from "./component/Skill";
+import Skill_js from "./component/Skill_js";
+import Skill_react from "./component/Skill_react";
+import Skill_node from "./component/Skill_node";
+import Skills from "./component/Skills";
+import Contact from "./component/Contact";
+import Education from "./component/Education";
+import Cursor from "./component/Cursor";
 
 const App = () => {
-  const [showBlackout, setShowBlackout] = useState(true);
-  const [showComponents, setShowComponents] = useState(false);
+  const [showBlackout, setShowBlackout] =
+    useState(true);
+
+  const [showComponents, setShowComponents] =
+    useState(false);
+
+  const [showCursor, setShowCursor] =
+    useState(false);
+
+  useEffect(() => {
+    const checkDevice = () => {
+      setShowCursor(
+        window.innerWidth >= 768
+      );
+    };
+
+    checkDevice();
+
+    window.addEventListener(
+      "resize",
+      checkDevice
+    );
+
+    return () =>
+      window.removeEventListener(
+        "resize",
+        checkDevice
+      );
+  }, []);
 
   const handleButtonClick = () => {
     setShowBlackout(false);
     setShowComponents(true);
   };
 
-  const router = createBrowserRouter([
-    {
-      path: '/',
-      element: (
-        <>
-          <Navbar />
-          <Hero />
-        </>
-      ),
-    },
-    {
-      path: '/skills',
-      element: (
-        <>
-         <Navbar />
-          <Skills />
-        </>
-      ),
-    },
-    {
-      path: '/contact',
-      element: (
-        <>
-         <Navbar />
-          <Contact />
-        </>
-      ),
-    },
-    {
-      path: '/projects',
-      element: (
-        <>
-        <Navbar />
-        <Skill/>
-          <Skill_js />
-          <Skill_react/>
-          <Skill_node/>
-        </>
-      ),
-    },
-    {
-      path: '/education',
-      element: (
-        <>
-         <Navbar />
-          <Education />
-        </>
-      ),
-    },
-  ]);
+  const router =
+    createBrowserRouter([
+      {
+        path: "/",
+        element: (
+          <>
+            <Navbar />
+            <Hero />
+          </>
+        ),
+      },
+
+      {
+        path: "/skills",
+        element: (
+          <>
+            <Navbar />
+            <Skills />
+          </>
+        ),
+      },
+
+      {
+        path: "/contact",
+        element: (
+          <>
+            <Navbar />
+            <Contact />
+          </>
+        ),
+      },
+
+      {
+        path: "/projects",
+        element: (
+          <>
+            <Navbar />
+            <Skill />
+            <Skill_js />
+            <Skill_react />
+            <Skill_node />
+          </>
+        ),
+      },
+
+      {
+        path: "/education",
+        element: (
+          <>
+            <Navbar />
+            <Education />
+          </>
+        ),
+      },
+    ]);
 
   return (
-    <div style={{ paddingTop: "72px" }} className="bg-[#070707] text-white">
-      <Cursor/>
-      
-      {showBlackout && <Blackout onClick={handleButtonClick} />}
+    <div
+      style={{
+        paddingTop: "72px",
+      }}
+      className="
+      bg-[#070707]
+      text-white
+      "
+    >
+      {showCursor && <Cursor />}
+
+      {showBlackout && (
+        <Blackout
+          onClick={
+            handleButtonClick
+          }
+        />
+      )}
+
       {showComponents && (
-        
-        <>
-        <RouterProvider router={router} />
-          {/* <Education/> 
-          <Skill />
-          <Skill_js />
-          <Skills/>
-          <Contact/> */}
-        </>
+        <RouterProvider
+          router={router}
+        />
       )}
     </div>
   );
