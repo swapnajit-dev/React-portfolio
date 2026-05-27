@@ -41,8 +41,8 @@ const Education = () => {
 
           <div className="flex md:flex-col items-center md:items-end gap-4 md:gap-3">
             <img
-              src="/images/photo.jpg"
-              className="w-14 h-14 md:w-24 md:h-24 rounded-xl object-cover border border-yellow-500/30"
+              src="/images/trans/c.jpg"
+              className="w-14 h-14 md:w-24 md:h-24 rounded-full object-cover border border-yellow-500/30"
               alt="college"
             />
 
@@ -64,7 +64,7 @@ const Education = () => {
         <div className="mt-6 md:mt-10 flex flex-wrap gap-3">
 
           <div className="px-4 py-2 text-sm rounded-lg bg-white/5 border border-white/10">
-            CGPA: <span className="text-yellow-400">9.25</span>
+            CGPA: <span className="text-yellow-400">9.00</span>
           </div>
 
           <div className="px-4 py-2 text-sm rounded-lg bg-white/5 border border-white/10">

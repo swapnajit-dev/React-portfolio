@@ -6,20 +6,24 @@ const data = [
     items: [
       {
         name: "C",
-        logo: "/images/c.gif",
-      },
+        logo: "/images/trans/image (13).png",
+      color:""
+    },
       {
-        name: "C++",
-        logo: "/images/cpp.gif",
-      },
+        name: "Java",
+        logo: "/images/trans/image (6).png",
+      color:"#43191A"
+    },
       {
         name: "Python",
-        logo: "/images/python.gif",
-      },
+        logo: "/images/trans/python.png",
+      color:"#2D6189"
+    },
       {
         name: "JavaScript",
-        logo: "/images/javascript.gif",
-      },
+        logo: "/images/trans/image (14).png",
+      color:"#EFBF22"
+    },
     ],
   },
 
@@ -28,20 +32,61 @@ const data = [
     items: [
       {
         name: "HTML",
-        logo: "/images/html.gif",
-      },
+        logo: "/images/trans/image (4).png",
+      color:"#E97647"
+    },
       {
         name: "CSS",
-        logo: "/images/css.gif",
-      },
+        logo: "/images/trans/css (2).png",
+      color:"#2674C6"
+    },
       {
         name: "React",
-        logo: "/images/react.gif",
-      },
+        logo: "/images/trans/react.png",
+      color:"#01D8FC"
+    },
+      {
+        name: "Angular",
+        logo: "/images/trans/Angular2.png",
+      color:"red"
+    },
+    ],
+  },
+ {
+    title: "UI Design",
+    items: [
+     
       {
         name: "Tailwind",
-        logo: "/images/tailwind.gif",
-      },
+        logo: "/images/trans/image (1).png",
+      color:"#20C3BE"
+    },
+      {
+        name: "Bootstrap",
+        logo: "/images/trans/image (8).png",
+      color:"#B582F9"
+    },
+      {
+        name: "GSAP",
+        logo: "/images/trans/image (10).png",
+      color:"#93D300"
+    },
+      {
+        name: "Three",
+        logo: "/images/trans/image (2).png",
+      color:"white"
+    },
+    {
+      name: "Material UI",
+      logo: "/images/trans/MUI.png",
+      color: "#0180FE"
+    },
+     {
+      name: "Framer Motion",
+      logo: "/images/trans/frame.png",
+      color: "#BB4B97"
+    },
+
     ],
   },
 
@@ -50,16 +95,24 @@ const data = [
     items: [
       {
         name: "Node.js",
-        logo: "/images/node.gif",
-      },
+        logo: "/images/trans/image (3).png",
+      color:"#6DA75D"
+    },
       {
         name: "Express",
-        logo: "/images/express.gif",
-      },
+        logo: "/images/trans/image (15).png",
+      color:"#828282"
+    },
       {
         name: "Django",
-        logo: "/images/django.gif",
-      },
+        logo: "/images/trans/image (12).png",
+      color:"#078140"
+    },
+      {
+        name: "PHP",
+        logo: "/images/trans/php.png",
+      color:"#767BB4"
+    },
     ],
   },
 
@@ -68,12 +121,24 @@ const data = [
     items: [
       {
         name: "MongoDB",
-        logo: "/images/mongodb.gif",
-      },
+        logo: "/images/trans/image (16).png",
+      color:"#5AB14B"
+    },
       {
         name: "MySQL",
-        logo: "/images/mysql.gif",
-      },
+        logo: "/images/trans/image (9).png",
+      color:"#4479A1"
+    },
+    {
+        name: "PostgreSQL",
+        logo: "/images/trans/postgr.png",
+      color:"#346993"
+    },
+    {
+        name: "SqlLite",
+        logo: "/images/trans/sqliter.png",
+      color:"#7DC6EE"
+    },
     ],
   },
 ];
@@ -113,7 +178,7 @@ export default function Skills() {
     const handler = (e) => {
       const delta =
         Math.abs(e.deltaX) >
-        Math.abs(e.deltaY)
+          Math.abs(e.deltaY)
           ? e.deltaX
           : e.deltaY;
 
@@ -221,8 +286,7 @@ export default function Skills() {
       flex-col
       items-center
       justify-center
-      px-4
-      overflow-hidden
+      px-4 overflow-hidden
     "
     >
       <h1
@@ -286,49 +350,45 @@ export default function Skills() {
                 gap-5
                 "
               >
-                {item.items.map(
-                  (skill) => (
-                    <div
-                      key={skill.name}
-                      className="
-                      flex
-                      flex-col
-                      items-center
-                      gap-2
-                      bg-white/5
-                      border
-                      border-white/10
-                      rounded-xl
-                      p-4
-                      hover:scale-105
-                      transition
-                      "
-                    >
-                      <img
-                        src={
-                          skill.logo
-                        }
-                        alt={
-                          skill.name
-                        }
-                        className="
-                        w-14
-                        h-14
-                        object-contain
-                        "
-                      />
+                {item.items.map((skill) => (
+  <div
+    key={skill.name}
+    className="
+      group
+      flex flex-col items-center gap-2
+      bg-white/5 border border-white/10
+      rounded-xl p-4
+      hover:scale-105 transition-all duration-300
+    "
+  >
+    <img
+      src={skill.logo}
+      alt={skill.name}
+      className="
+        w-14 h-14 object-contain
+        transition-all duration-300
+        group-hover:scale-110
+      "
+      style={{
+        filter: `drop-shadow(0 0 0px ${skill.color})`,
+      }}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.filter =
+          `drop-shadow(0 0 8px ${skill.color})
+           drop-shadow(0 0 20px ${skill.color})
+           drop-shadow(0 0 35px ${skill.color})`;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.filter =
+          `drop-shadow(0 0 0px ${skill.color})`;
+      }}
+    />
 
-                      <span
-                        className="
-                        text-sm
-                        text-white/90
-                        "
-                      >
-                        {skill.name}
-                      </span>
-                    </div>
-                  )
-                )}
+    <span className="text-sm text-white/90">
+      {skill.name}
+    </span>
+  </div>
+))}
               </div>
             </div>
           </div>

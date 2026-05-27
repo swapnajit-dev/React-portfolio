@@ -161,3 +161,10 @@ export const nodeItems = {
     }
   ]
 }
+
+export const djangoItems = {
+  title: "DJANGO",
+  items: [
+    
+  ]
+}
