@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 const ROLES = [
   "Full Stack Developer",
+  "Full Stack Django Developer",
   "React Developer",
   "MERN Stack Developer",
   "Creative Frontend Engineer",
@@ -253,7 +254,7 @@ const Hero = () => {
             <motion.div variants={item} style={{ marginBottom: '2rem' }}>
               <span className="section-label" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
                 <span style={{ width: '24px', height: '1px', background: '#D4AF37', display: 'inline-block' }} />
-                MCA Student · Full Stack Developer
+                . Full Stack Developer
               </span>
             </motion.div>
 
@@ -308,8 +309,8 @@ const Hero = () => {
                 marginBottom: '2.5rem',
               }}
             >
-              I craft exceptional digital experiences using the MERN stack, Django, and modern animation libraries.
-              Currently pursuing MCA at Nalanda Institute of Technology, turning complex ideas into elegant, performant web applications.
+              Crafting immersive, high-performance web experiences with the MERN stack, Django, and modern animation technologies. Focused on building scalable, visually striking, and interactive digital products that combine clean architecture, smooth user experiences, and powerful functionality.
+
             </motion.p>
 
             {/* CTAs */}
@@ -347,8 +348,8 @@ const Hero = () => {
 
             {/* Stats */}
             <motion.div variants={item} style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <StatBadge number="5+" label="Projects" delay={0.8} />
-              <StatBadge number="2+" label="Years Exp." delay={0.9} />
+              <StatBadge number="5+" label="Live Projects" delay={0.8} />
+              <StatBadge number="1+" label="Years Exp." delay={0.9} />
               <StatBadge number="10+" label="Technologies" delay={1.0} />
             </motion.div>
           </motion.div>

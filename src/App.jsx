@@ -84,18 +84,41 @@ const App = () => {
         ),
       },
 
-      {
-        path: "/projects",
-        element: (
-          <>
-            <Navbar />
-            <Skill />
-            <Skill_js />
-            <Skill_react />
-            <Skill_node />
-          </>
-        ),
-      },
+     {
+  path: "/projects",
+  element: (
+    <>
+      <Navbar />
+      <Skill />
+      <Skill_js />
+      <Skill_react />
+      <Skill_node />
+
+     <div className="w-full flex items-center justify-center py-16 md:py-32">
+  <h1
+    className="
+      text-4xl
+      md:text-7xl
+      font-extrabold
+      uppercase
+      tracking-[6px]
+      md:tracking-[8px]
+      text-transparent
+      bg-clip-text
+      bg-gradient-to-r
+      from-cyan-400
+      via-blue-500
+      to-purple-500
+      animate-pulse
+      text-center
+    "
+  >
+    Coming Soon...
+  </h1>
+</div>
+    </>
+  ),
+},
 
       {
         path: "/education",

@@ -312,17 +312,20 @@ export default function SkillCarousel({
   };
 
   return (
-    <div className="
-    min-h-screen
-    bg-[#060608]
-    flex
-    flex-col
-    justify-center
-    items-center
-    overflow-hidden
-    px-4
-    text-white
-    ">
+<div className="
+w-full
+bg-[#060608]
+flex
+flex-col
+items-center
+overflow-hidden
+px-4
+pt-10
+pb-4
+md:pt-20
+md:pb-10
+text-white
+">
 
       <h1 className="
       text-4xl
